@@ -80,7 +80,7 @@ return [
         ],
         'mongodb' => [
             'driver' => 'mongodb',
-            'dsn' => env('DB_URI', "mongodb+srv://".getenv('MONGO_DB_USERNAME').":".getenv('MONGO_DB_PASSWORD')."@matious.apcqn.mongodb.net/Matious?retryWrites=true&w=majority"
+            'dsn' => env('DB_URI', 'mongodb+srv://oessahaby:Atlas2022@matious.apcqn.mongodb.net/Matious?retryWrites=true&w=majority'
         ),
             'database' => 'Matious',
         ],
