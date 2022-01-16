@@ -291,35 +291,51 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46172202-12"></script>
   <script>
+
+var barChartData = {
+  labels: [
+    "Member",
+    "Normal",
+    
+  ],
+  datasets: [
+    {
+      label: "Male",
+      backgroundColor: "pink",
+      borderColor: "red",
+      borderWidth: 1,
+      data: <?php echo json_encode($dataMale); ?>
+    },
+    {
+      label: "Famele",
+      backgroundColor: "lightblue",
+      borderColor: "blue",
+      borderWidth: 1,
+      data: <?php echo json_encode($dataFamele); ?>
+    },
+    
+  ]
+};   
+var chartOptions = {
+  responsive: true,
+  legend: {
+    position: "top"
+  },
+  
+  scales: {
+    yAxes: [{
+      ticks: {
+        beginAtZero: true
+      }
+    }]
+  }
+}
+
 const ctx = document.getElementById('CountryChart').getContext('2d');
 const myChart = new Chart(ctx, {
     type: 'bar',
-    data: {
-        labels: <?php echo json_encode($label); ?>,
-        datasets: [{
-           
-            data: <?php echo json_encode($data); ?>,
-            backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)',
-     
-    ],
-        }]
-    },
-    options: {
-      legend: {
-                display: false,
-                
-            },
-        scales: {
-            yAxes: [{
-                display: true,
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
+    data:barChartData,
+    options: chartOptions
 });
 
 

@@ -39,8 +39,9 @@ class PostController extends Controller
         return $collection->aggregate([
             [
                 '$group' => [
-                    "_id" => '$Customer type',
+                    "_id" => ['$Customer type','$Gender'],
                     'Customer type' => ['$first' => '$Customer type'],
+                    'Gender' => ['$first' => '$Gender'],
                     'sum' => ['$sum' => 1]
                 ]
             ],
@@ -118,12 +119,21 @@ class PostController extends Controller
     public function show()
     {
         $count = $this->getCount();
-        $label = array();
-        $data = array();
+        $labelMale = array();
+        $dataMale = array();
+        $labelFamele = array();
+        $dataFamele = array();
         $nbr = json_decode($this->nbr_achat_per_client(),true);
         foreach ($nbr as $key) {
-            array_push($label,$key['_id']);
-            array_push($data,$key['sum']);
+            if ($key['Gender']=="Male") {
+                array_push($labelMale,$key['_id']);
+                array_push($dataMale,$key['sum']);
+            }
+            else {
+                array_push($labelFamele,$key['_id']);
+                array_push($dataFamele,$key['sum']);
+            }
+            
         }
         $labelRevue = array();
         $dataRevue = array();
@@ -157,10 +167,11 @@ class PostController extends Controller
             array_push($dataDate,$key['sum']);
         }
         
-        return view('post',['label' => $label, 'data' => $data,'count'=>$count,
+        return view('post',['labelMale' => $labelMale, 'dataMale' => $dataMale,
+        'labelFamele' => $labelFamele, 'dataFamele' => $dataFamele,'count'=>$count,
         'labelRevue'=>$labelRevue,'dataRevue'=>$dataRevue,'labelRating'=>$labelRating,'dataRating'=>$dataRating,
         'labelPayment'=>$labelPayment,'dataPayment'=>$dataPayment,'labelDate'=>$labelDate,'dataDate'=>$dataDate]);
-        // dd($labelDate);
+        
         
     }
     public function store()
