@@ -221,11 +221,11 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <div class="card card-chart">
+            <div class="card card-chart" style="height:500px">
               <div class="card-header">
                 <div class="row">
                   <div class="col-sm-6 text-left">
-                    <h5 class="card-category">le nombre d'achat par mois dans 2019</h5>
+                    <h5 class="card-category">le nombre d'achat dans 2019</h5>
                     
                   </div>
                 
