@@ -49,6 +49,21 @@ class PostController extends Controller
     });
     return json_encode($all);
    }
+   public function type_paiement(){
+    $all = Post::raw(function ($collection) {
+        return $collection->aggregate([
+            [
+                '$group' => [
+                    "_id" => '$Payment',
+                    'Payment' => ['$first' => '$Payment'],
+                    'sum' => ['$sum' => 1]
+                ]
+            ],
+
+        ]);
+    });
+    return json_encode($all);
+   }
    public function getCount(){
        $all = Post::count();
        return $all;
@@ -85,6 +100,21 @@ class PostController extends Controller
     return $all;
    }
    
+   public function sum_per_date(){
+    $all = Post::raw(function ($collection) {
+        return $collection->aggregate([
+            [
+                '$group' => [
+                    "_id" => '$Date',
+                    'Gender' => ['$first' => '$Date'],
+                    'sum' => ['$sum' => 1]
+                ]
+            ],
+
+        ]);
+    });
+    return $all;
+   }
     public function show()
     {
         $count = $this->getCount();
@@ -109,8 +139,28 @@ class PostController extends Controller
             array_push($labelRating,$key['_id']);
             array_push($dataRating,$key['sum']);
         }
+        $labelPayment = array();
+        $dataPayment = array();
+        $nbrPayment = json_decode($this->type_paiement(),true);
+        foreach ($nbrPayment as $key) {
+            array_push($labelPayment,$key['_id']);
+            array_push($dataPayment,$key['sum']);
+        }
+        $labelDate = array();
+        $dataDate = array();
+        $nbrDate = json_decode($this->sum_per_date(),true);
+        foreach ($nbrDate as $key) {
+            $key1 = explode("/",$key['_id']);
+            unset($key1[2]);
+            $key2 = join("-",$key1);
+            array_push($labelDate,$key2);
+            array_push($dataDate,$key['sum']);
+        }
+        
         return view('post',['label' => $label, 'data' => $data,'count'=>$count,
-        'labelRevue'=>$labelRevue,'dataRevue'=>$dataRevue,'labelRating'=>$labelRating,'dataRating'=>$dataRating]);
+        'labelRevue'=>$labelRevue,'dataRevue'=>$dataRevue,'labelRating'=>$labelRating,'dataRating'=>$dataRating,
+        'labelPayment'=>$labelPayment,'dataPayment'=>$dataPayment,'labelDate'=>$labelDate,'dataDate'=>$dataDate]);
+        // dd($labelDate);
         
     }
     public function store()
@@ -126,7 +176,8 @@ class PostController extends Controller
         $fileArray[$i]['Quantity'] = intval($fileArray[$i]['Quantity']);
         $fileArray[$i]['Rating'] = floatval($fileArray[$i]['Rating']);
         $fileArray[$i]['gross margin percentage'] = floatval($fileArray[$i]['gross margin percentage']);
-      } 
+ 
+    } 
         Post::truncate();
         Post::insert($fileArray);
    }

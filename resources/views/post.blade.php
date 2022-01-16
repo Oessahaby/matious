@@ -6,28 +6,7 @@
 </head>
 <body>
 
-<!-- <canvas id="myChart" width="100" height="100"></canvas>
-<script>
-const ctx = document.getElementById('myChart').getContext('2d');
-const myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: <?php echo json_encode($label); ?>,
-        datasets: [{
-            label: '# of Votes',
-            data: <?php echo json_encode($data); ?>,
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-</script> -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +16,7 @@ const myChart = new Chart(ctx, {
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Black Dashboard PRO by Creative Tim
+    Matious
   </title>
   <!-- Extra details for Live View on GitHub Pages -->
   <!-- Canonical SEO -->
@@ -86,90 +65,7 @@ const myChart = new Chart(ctx, {
   
     <div class="main-panel">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <div class="navbar-minimize d-inline">
-              <button class="minimize-sidebar btn btn-link btn-just-icon" rel="tooltip" data-original-title="Sidebar toggle" data-placement="right">
-                <i class="tim-icons icon-align-center visible-on-sidebar-regular"></i>
-                <i class="tim-icons icon-bullet-list-67 visible-on-sidebar-mini"></i>
-              </button>
-            </div>
-            <div class="navbar-toggle d-inline">
-              <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
-            </div>
-            <a class="navbar-brand" href="javascript:void(0)">Dashboard</a>
-          </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navigation">
-            <ul class="navbar-nav ml-auto">
-              <li class="search-bar input-group">
-                <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split"></i>
-                  <span class="d-lg-none d-md-block">Search</span>
-                </button>
-              </li>
-              <li class="dropdown nav-item">
-                <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                  <div class="notification d-none d-lg-block d-xl-block"></div>
-                  <i class="tim-icons icon-sound-wave"></i>
-                  <p class="d-lg-none">
-                    Notifications
-                  </p>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                  <li class="nav-link">
-                    <a href="#" class="nav-item dropdown-item">Mike John responded to your email</a>
-                  </li>
-                  <li class="nav-link">
-                    <a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a>
-                  </li>
-                  <li class="nav-link">
-                    <a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael is in town</a>
-                  </li>
-                  <li class="nav-link">
-                    <a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a>
-                  </li>
-                  <li class="nav-link">
-                    <a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="dropdown nav-item">
-                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                  <div class="photo">
-                    <img src="../assets/img/mike.jpg" alt="Profile Photo">
-                  </div>
-                  <b class="caret d-none d-lg-block d-xl-block"></b>
-                  <p class="d-lg-none">
-                    Log out
-                  </p>
-                </a>
-                <ul class="dropdown-menu dropdown-navbar">
-                  <li class="nav-link">
-                    <a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a>
-                  </li>
-                  <li class="nav-link">
-                    <a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a>
-                  </li>
-                  <li class="dropdown-divider"></li>
-                  <li class="nav-link">
-                    <a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="separator d-lg-none"></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      
       <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -185,45 +81,44 @@ const myChart = new Chart(ctx, {
       <!-- End Navbar -->
       <div class="content">
         <div class="row">
-        
+        <div class="col-lg-3 col-md-6">
+            <div class="card card-stats">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-5">
+                    <div class="info-icon text-center icon-primary">
+                      <i class="tim-icons icon-single-02"></i>
+                    </div>
+                  </div>
+                  <div class="col-7">
+                    <div class="numbers">
+                      <p class="card-category">Nombre d'enregistrements</p>
+                      <h3 class="card-title"><?php echo ($count)?></h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <hr>
+                <div class="stats">
+                 
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="col-lg-3 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
                 <div class="row">
                   <div class="col-5">
                     <div class="info-icon text-center icon-warning">
-                      <i class="tim-icons icon-chat-33"></i>
-                    </div>
-                  </div>
-                  <div class="col-7">
-                    <div class="numbers">
-                      <p class="card-category">Number</p>
-                      <h3 class="card-title">150GB</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer">
-                <hr>
-                <div class="stats">
-                  <i class="tim-icons icon-refresh-01"></i> Update Now
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="card card-stats">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-5">
-                    <div class="info-icon text-center icon-primary">
                       <i class="tim-icons icon-shape-star"></i>
                     </div>
                   </div>
                   <div class="col-7">
                     <div class="numbers">
-                      <p class="card-category">Followers</p>
-                      <h3 class="card-title">+45k</h3>
+                      <p class="card-category"><?php echo($labelPayment[0])?></p>
+                      <h3 class="card-title"><?php echo($dataPayment[0])?></h3>
                     </div>
                   </div>
                 </div>
@@ -231,24 +126,25 @@ const myChart = new Chart(ctx, {
               <div class="card-footer">
                 <hr>
                 <div class="stats">
-                  <i class="tim-icons icon-sound-wave"></i> Last Research
+                  
                 </div>
               </div>
             </div>
           </div>
+         
           <div class="col-lg-3 col-md-6">
             <div class="card card-stats">
               <div class="card-body">
                 <div class="row">
                   <div class="col-5">
                     <div class="info-icon text-center icon-success">
-                      <i class="tim-icons icon-single-02"></i>
+                      <i class="tim-icons icon-shape-star"></i>
                     </div>
                   </div>
                   <div class="col-7">
                     <div class="numbers">
-                      <p class="card-category">Users</p>
-                      <h3 class="card-title">150,000</h3>
+                      <p class="card-category"><?php echo($labelPayment[1])?></p>
+                      <h3 class="card-title"><?php echo($dataPayment[1])?></h3>
                     </div>
                   </div>
                 </div>
@@ -256,7 +152,7 @@ const myChart = new Chart(ctx, {
               <div class="card-footer">
                 <hr>
                 <div class="stats">
-                  <i class="tim-icons icon-trophy"></i> Customers feedback
+                  
                 </div>
               </div>
             </div>
@@ -267,13 +163,13 @@ const myChart = new Chart(ctx, {
                 <div class="row">
                   <div class="col-5">
                     <div class="info-icon text-center icon-danger">
-                      <i class="tim-icons icon-molecule-40"></i>
+                      <i class="tim-icons icon-shape-star"></i>
                     </div>
                   </div>
                   <div class="col-7">
                     <div class="numbers">
-                      <p class="card-category">Errors</p>
-                      <h3 class="card-title">12</h3>
+                      <p class="card-category"><?php echo($labelPayment[2])?></p>
+                      <h3 class="card-title"><?php echo($dataPayment[2])?></h3>
                     </div>
                   </div>
                 </div>
@@ -281,7 +177,7 @@ const myChart = new Chart(ctx, {
               <div class="card-footer">
                 <hr>
                 <div class="stats">
-                  <i class="tim-icons icon-watch-time"></i> In the last hours
+          
                 </div>
               </div>
             </div>
@@ -323,88 +219,30 @@ const myChart = new Chart(ctx, {
             </div>
           </div>
         </div>
-     
-      </div>
-      <footer class="footer">
-        <div class="container-fluid">
-          <ul class="nav">
-            <li class="nav-item">
-              <a href="javascript:void(0)" class="nav-link">
-                Creative Tim
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="javascript:void(0)" class="nav-link">
-                About Us
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="javascript:void(0)" class="nav-link">
-                Blog
-              </a>
-            </li>
-          </ul>
-          <div class="copyright">
-            ©
-            <script>
-              document.write(new Date().getFullYear())
-            </script> made with <i class="tim-icons icon-heart-2"></i> by
-            <a href="javascript:void(0)" target="_blank">Creative Tim</a> for a better web.
-          </div>
-        </div>
-      </footer>
-    </div>
-  </div>
-  <div class="fixed-plugin">
-    <div class="dropdown show-dropdown">
-      <a href="#" data-toggle="dropdown">
-        <i class="fa fa-cog fa-2x"> </i>
-      </a>
-      <ul class="dropdown-menu">
-        <li class="header-title"> Sidebar Background</li>
-        <li class="adjustments-line">
-          <a href="javascript:void(0)" class="switch-trigger background-color">
-            <div class="badge-colors text-center">
-              <span class="badge filter badge-primary active" data-color="primary"></span>
-              <span class="badge filter badge-info" data-color="blue"></span>
-              <span class="badge filter badge-success" data-color="green"></span>
-              <span class="badge filter badge-warning" data-color="orange"></span>
-              <span class="badge filter badge-danger" data-color="red"></span>
+        <div class="row">
+          <div class="col-12">
+            <div class="card card-chart">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-sm-6 text-left">
+                    <h5 class="card-category">le nombre d'achat par mois dans 2019</h5>
+                    
+                  </div>
+                
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="chartBig1" height="80px"></canvas>
+                </div>
+              </div>
             </div>
-            <div class="clearfix"></div>
-          </a>
-        </li>
-        <li class="header-title">
-          Sidebar Mini
-        </li>
-        <li class="adjustments-line">
-          <div class="togglebutton switch-sidebar-mini">
-            <span class="label-switch">OFF</span>
-            <input type="checkbox" name="checkbox" checked class="bootstrap-switch" data-on-label="" data-off-label="" />
-            <span class="label-switch label-right">ON</span>
           </div>
-          <div class="togglebutton switch-change-color mt-3">
-            <span class="label-switch">LIGHT MODE</span>
-            <input type="checkbox" name="checkbox" checked class="bootstrap-switch" data-on-label="" data-off-label="" />
-            <span class="label-switch label-right">DARK MODE</span>
-          </div>
-        </li>
-        <li class="button-container mt-4">
-          <a href="../docs/1.0/getting-started/introduction.html" class="btn btn-default btn-block btn-round">
-            Documentation
-          </a>
-        </li>
-        <li class="header-title">Thank you for 95 shares!</li>
-        <li class="button-container text-center">
-          <button id="twitter" class="btn btn-round btn-info"><i class="fab fa-twitter"></i> &middot; 45</button>
-          <button id="facebook" class="btn btn-round btn-info"><i class="fab fa-facebook-f"></i> &middot; 50</button>
-          <br>
-          <br>
-          <a class="github-button" href="https://github.com/creativetimofficial/ct-black-dashboard-pro" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-        </li>
-      </ul>
+     
+      
     </div>
   </div>
+ 
   <!--   Core JS Files   -->
   <script src="https://demos.creative-tim.com/marketplace/black-dashboard-pro/assets/js/core/jquery.min.js"></script>
   <script src="https://demos.creative-tim.com/marketplace/black-dashboard-pro/assets/js/core/popper.min.js"></script>
@@ -461,6 +299,11 @@ const myChart = new Chart(ctx, {
         datasets: [{
            
             data: <?php echo json_encode($data); ?>,
+            backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+     
+    ],
         }]
     },
     options: {
@@ -487,8 +330,15 @@ const myChart1 = new Chart(ctx1, {
     data: {
         labels: <?php echo json_encode($labelRevue); ?>,
         datasets: [{
-           
             data: <?php echo json_encode($dataRevue); ?>,
+            backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)',
+      'rgb(255, 100, 86)',
+      'rgb(255, 33, 10)',
+      'rgb(53, 205, 86)'
+    ],
             
         }]
     },
@@ -518,7 +368,42 @@ const myChart2 = new Chart(ctx2, {
         datasets: [{
            
             data: <?php echo json_encode($dataRating); ?>,
-            
+            backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+     
+    ],
+        }]
+    },
+    options: {
+      legend: {
+                display: false,
+                
+            },
+        scales: {
+            yAxes: [{
+                display: true,
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+const ctx3 = document.getElementById('chartBig1').getContext('2d');
+const myChart3 = new Chart(ctx3, {
+    type: 'line',
+    data: {
+        labels: <?php echo json_encode($labelDate); ?>,
+        datasets: [{
+           
+            data: <?php echo json_encode($dataDate); ?>,
+            backgroundColor: [
+      'rgb(10, 99, 132)',
+      
+     
+    ],
         }]
     },
     options: {
