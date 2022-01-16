@@ -24,6 +24,7 @@ This project describes graphs below
 2. Go to /conf/database.php and put at the mongodb setting the url provides by mongodb atlas
 3. run php artisan serve 
 4. Go to http://localhost:800
+5. Lancer http://localhost:800/posts pour importer le fichier test.csv to mongodb
 
 
 

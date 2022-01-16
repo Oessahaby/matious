@@ -191,6 +191,7 @@ class PostController extends Controller
     } 
         Post::truncate();
         Post::insert($fileArray);
+        return redirect('/post');
    }
    
 }
